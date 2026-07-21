@@ -617,6 +617,63 @@ header.main-header {
 .t-loc { font-size: 11.5px; color: var(--ink-60); }
 
 /* =============================================
+   CATEGORY QUICK CHIPS SECTION
+============================================= */
+.cat-chips-sec {
+  background: var(--w);
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cat-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.chip-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+  text-decoration: none;
+}
+.chip-card:hover {
+  background: #ffffff;
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.chip-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.chip-text strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.chip-text span {
+  font-size: 11px;
+  color: var(--ink-60);
+}
+@media (max-width: 900px) {
+  .cat-chips-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .cat-chips-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================================
    CUSTOMER FEEDBACK SHOWCASE SECTION
 ============================================= */
 .fb-sec {
@@ -1473,6 +1530,41 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
     </div>
     <div class="s-progress" id="sProgress" role="progressbar" aria-label="Tiến độ tự động chuyển banner"></div>
   </div>
+  <!-- CATEGORY QUICK CHIPS STRIP -->
+  <div class="cat-chips-sec">
+    <div class="wrap">
+      <div class="cat-chips-grid">
+        <a href="#" class="chip-card nav-link" data-page="gong-kinh">
+          <div class="chip-icon">✨</div>
+          <div class="chip-text">
+            <strong>Gọng Titanium</strong>
+            <span>Siêu nhẹ &amp; siêu bền</span>
+          </div>
+        </a>
+        <a href="#" class="chip-card nav-link" data-page="kinh-mat">
+          <div class="chip-icon">🕶️</div>
+          <div class="chip-text">
+            <strong>Kính Mát UV400</strong>
+            <span>Thời trang chống chói</span>
+          </div>
+        </a>
+        <a href="#" class="chip-card nav-link" data-page="trong-kinh">
+          <div class="chip-icon">☀️</div>
+          <div class="chip-text">
+            <strong>Tròng Đổi Màu</strong>
+            <span>Essilor &amp; Chemi</span>
+          </div>
+        </a>
+        <a href="#" class="chip-card nav-link" data-page="gong-kinh">
+          <div class="chip-icon">👓</div>
+          <div class="chip-text">
+            <strong>Nhựa Acetate</strong>
+            <span>Phong cách Hàn Quốc</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -1488,31 +1580,31 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
       </div>
 
       <div class="editorial-grid">
-        <!-- Main Card -->
+        <!-- Main Bento Tile -->
         <article class="ed-main reveal" data-page="collection" onclick="navigate('collection')">
-          <img src="assets/banner.png" alt="HMK Eyewear Signature Collection 2025 — Bộ sưu tập đặc biệt" loading="lazy" />
+          <img src="assets/col_mongnhan.webp" alt="HMK Eyewear Mộng Nhãn Tinh Hoa 2025 — Bộ sưu tập mới" loading="lazy" />
           <span class="ed-new-badge">Mới 2025</span>
           <div class="ed-text-over">
-            <div class="label">Bộ Sưu Tập Đặc Biệt</div>
-            <h3>Signature Collection</h3>
+            <div class="label">Bộ Sưu Tập Nổi Bật</div>
+            <h3>Mộng Nhãn Tinh Hoa</h3>
             <a href="#" class="ed-pill-link nav-link" data-page="collection">Khám Phá →</a>
           </div>
         </article>
 
-        <!-- Sub Cards Stacked -->
+        <!-- Sub Bento Stack -->
         <div style="display:flex;flex-direction:column;gap:18px">
-          <article class="ed-sub reveal d1" data-page="gong-kinh" onclick="navigate('gong-kinh')">
-            <img src="assets/p1.png" alt="HMK Eyewear — Gọng kính Optical Elite, kính cận cao cấp titanium" loading="lazy" />
+          <article class="ed-sub reveal d1" data-page="kinh-mat" onclick="navigate('kinh-mat')">
+            <img src="assets/col_shades.webp" alt="HMK Eyewear — Shades of Brilliance Kính mát thời trang" loading="lazy" />
             <div class="ed-sub-info">
-              <div class="label">Gọng Kính</div>
-              <h3>Optical Elite</h3>
+              <div class="label">Kính Mát Thời Trang</div>
+              <h3>Shades of Brilliance</h3>
             </div>
           </article>
-          <article class="ed-sub reveal d2" data-page="trong-kinh" onclick="navigate('trong-kinh')">
-            <img src="assets/p3.png" alt="HMK Eyewear — Tròng kính chống ánh sáng xanh & tròng kính đổi màu" loading="lazy" />
+          <article class="ed-sub reveal d2" data-page="gong-kinh" onclick="navigate('gong-kinh')">
+            <img src="assets/col_therock.jpg" alt="HMK Eyewear — The Rock Collection gọng kính góc cạnh" loading="lazy" />
             <div class="ed-sub-info">
-              <div class="label">Tròng Kính Cao Cấp</div>
-              <h3>Blue Shield &amp; Transitions</h3>
+              <div class="label">Bộ Sưu Tập Độc Bản</div>
+              <h3>The Rock Collection</h3>
             </div>
           </article>
         </div>
