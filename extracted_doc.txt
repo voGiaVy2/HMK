@@ -1,0 +1,7 @@
+Click vào banner tròng kính sẽ không có dữ liệu:
+Các banner trên web không chuyển động, khiến cho người dùng muốn tìm hiểu phải tự kéo/click:
+Ngôn ngữ lộn xộn, không nhất quán
+Design lệch
+Nhiều vị trí k có dữ liệu trên web
+Điều hướng đến sai sản phẩm
+Không có nút chọn hay nút điều hướng, khi lia chuột vào thì banner chạy sẽ ngừng, vì thế sẽ tốn thời gian hơn để có thể xem xét hết các banner quảng cáo.

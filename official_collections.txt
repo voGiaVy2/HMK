@@ -1,0 +1,60 @@
+HREF: https://hmkeyewear.com/
+ALT: HMK Eyewear
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2023/09/logo.svg
+==================================================
+HREF: https://hmkeyewear.com/cart
+ALT: 
+TEXT: 0
+IMG: https://hmkeyewear.com/wp-content/themes/theme/assets/assets/icons/bag.svg
+==================================================
+HREF: /bo-suu-tap/mong-nhan-tinh-hoa
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/1.-MONG-NHAN-TINH-HOA.webp
+==================================================
+HREF: /bo-suu-tap/shades-of-brilliance
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/2.-shades-brilliance.webp
+==================================================
+HREF: /bo-suu-tap/aurora-alloy
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/3.-Aurora-Alloy.webp
+==================================================
+HREF: /bo-suu-tap/red-velvet-vision
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/5.-Red-velvet.webp
+==================================================
+HREF: /bo-suu-tap/the-rock
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/06/Trang-Collection_.jpg
+==================================================
+HREF: /bo-suu-tap/witching-aura
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/6.-Witching-Aura.webp
+==================================================
+HREF: /bo-suu-tap/disco-dream
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/7.-Disc-Dream.webp
+==================================================
+HREF: /bo-suu-tap/inde-girl
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/uploads/2025/02/8.-Inde-Girl_.webp
+==================================================
+HREF: https://shopee.vn/hmkeyewear
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/themes/theme/assets/assets/images/shopee.png
+==================================================
+HREF: https://www.lazada.vn/shop/hmk-eyewear
+ALT: 
+TEXT: 
+IMG: https://hmkeyewear.com/wp-content/themes/theme/assets/assets/images/lazada.png
+==================================================
