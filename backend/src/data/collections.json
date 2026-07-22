@@ -1,0 +1,74 @@
+[
+  {
+    "id": "col1",
+    "name": "Mộng Nhãn Tinh Hoa",
+    "badge": "Á Đông Tinh Hoa",
+    "desc": "Thiết kế gọng kính tinh xảo, tôn vinh nét đẹp Á Đông thanh lịch và trường tồn.",
+    "tag": "Mới 2025",
+    "image": "assets/col_mongnhan.webp",
+    "targetPage": "gong-kinh"
+  },
+  {
+    "id": "col2",
+    "name": "Shades of Brilliance",
+    "badge": "Kính Mát UV400",
+    "desc": "Những thiết kế kính mát chống tia UV400 thời thượng và rực rỡ nhất mùa hè.",
+    "tag": null,
+    "image": "assets/col_shades.webp",
+    "targetPage": "kinh-mat"
+  },
+  {
+    "id": "col3",
+    "name": "Aurora Alloy",
+    "badge": "Titanium Alloy",
+    "desc": "Chất liệu hợp kim titan siêu nhẹ, thanh thoát và siêu bền bỉ theo năm tháng.",
+    "tag": null,
+    "image": "assets/col_aurora.webp",
+    "targetPage": "gong-kinh"
+  },
+  {
+    "id": "col4",
+    "name": "Red Velvet Vision",
+    "badge": "Phong Cách",
+    "desc": "Cảm hứng thời trang ấn tượng, cá tính và quyến rũ vượt thời gian.",
+    "tag": "HOT",
+    "image": "assets/col_redvelvet.webp",
+    "targetPage": "gong-kinh"
+  },
+  {
+    "id": "col5",
+    "name": "The Rock Collection",
+    "badge": "Hot Trend",
+    "desc": "Dáng gọng góc cạnh mạnh mẽ, thể hiện bản lĩnh và khí chất hiện đại.",
+    "tag": null,
+    "image": "assets/col_therock.jpg",
+    "targetPage": "gong-kinh"
+  },
+  {
+    "id": "col6",
+    "name": "Witching Aura",
+    "badge": "Độc Bản",
+    "desc": "Vẻ đẹp huyền bí với những đường nét uốn lượn cuốn hút khó cưỡng.",
+    "tag": null,
+    "image": "assets/col_witching.webp",
+    "targetPage": "kinh-mat"
+  },
+  {
+    "id": "col7",
+    "name": "Disc Dream",
+    "badge": "Retro 80s",
+    "desc": "Sự trở lại của phong cách kính vintage thập niên 80 đầy hoài niệm.",
+    "tag": null,
+    "image": "assets/col_disco.webp",
+    "targetPage": "gong-kinh"
+  },
+  {
+    "id": "col8",
+    "name": "Inde Girl",
+    "badge": "Dành Cho Nữ",
+    "desc": "Gọng kính dành riêng cho phái đẹp yêu thích tự do và phong cách tự tin.",
+    "tag": "For Her",
+    "image": "assets/col_indegirl.webp",
+    "targetPage": "gong-kinh"
+  }
+]

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bộ Sưu Tập HMK Eyewear — 8 Bộ Sưu Tập Độc Quyền 2025</title>
+  <meta name="description" content="Khám phá 8 bộ sưu tập kính mắt độc quyền từ HMK Eyewear: Mộng Nhãn Tinh Hoa, Shades of Brilliance, Aurora Alloy, Red Velvet Vision và nhiều hơn nữa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="creative.css" />
+  <style>
+    :root {
+      --gold: #c8a96e; --gold-l: #dfc47e; --gold-d: #9e7f4a;
+      --ink: #111111; --ink-80: rgba(17,17,17,0.8); --ink-60: rgba(17,17,17,0.6); --ink-40: rgba(17,17,17,0.4);
+      --border: #e8e4dc; --bg: #faf8f5; --w: #ffffff; --bone: #f3efe6;
+      --serif: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --ease: cubic-bezier(0.4,0,0.2,1);
+      --r: 16px;
+      --r-pill: 100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ANNOUNCEMENT TICKER */
+    .announce {
+      background: var(--ink);
+      color: rgba(255,255,255,0.92);
+      padding: 10px 0;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      overflow: hidden;
+      position: relative;
+      z-index: 1000;
+    }
+    .announce-inner {
+      display: flex; gap: 80px;
+      white-space: nowrap;
+      animation: ticker 32s linear infinite;
+    }
+    .announce-item::before { content: '✦ '; color: var(--gold); }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    /* MAIN HEADER */
+    header.main-header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s var(--ease);
+    }
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 28px; font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-center {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; list-style: none;
+    }
+    .nav-link {
+      font-size: 11.5px; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--ink-60);
+      position: relative; padding: 6px 0;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+      transform: scaleX(0); transform-origin: right;
+      transition: transform 0.3s var(--ease);
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover, .nav-link.active { color: var(--ink); }
+
+    /* Dropdown Menus */
+    .nav-item-drop { position: relative; }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%) translateY(15px);
+      background: #fff; min-width: 340px; padding: 22px;
+      border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+      display: flex; gap: 28px; opacity: 0; visibility: hidden;
+      transition: all 0.3s var(--ease); z-index: 100; pointer-events: none;
+    }
+    .nav-item-drop:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); pointer-events: auto; }
+    .dropdown-menu ul { list-style: none; flex: 1; }
+    .dropdown-menu .drop-title { font-size: 10px; letter-spacing: 0.1em; color: var(--ink-40); margin-bottom: 10px; font-weight: 700; }
+    .dropdown-menu li { margin-bottom: 8px; }
+    .dropdown-menu a { font-size: 13px; color: var(--ink-80); transition: color 0.2s; display: block; }
+    .dropdown-menu a:hover { color: var(--gold-d); }
+
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .nav-icon {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ink); background: none; border: none;
+      transition: all 0.2s; position: relative; cursor: pointer;
+    }
+    .nav-icon:hover { background: var(--bone); }
+    .nav-icon svg { width: 19px; height: 19px; stroke-width: 1.6; }
+    .cart-badge {
+      position: absolute; top: 4px; right: 4px;
+      width: 16px; height: 16px;
+      background: var(--gold); border-radius: 50%;
+      font-size: 9px; font-weight: 700; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--gold); color: var(--ink) !important;
+      border-radius: var(--r-pill);
+      font-size: 11px !important; font-weight: 700 !important;
+      letter-spacing: 0.14em !important; text-transform: uppercase;
+      transition: all 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--gold-l); transform: scale(1.04); box-shadow: 0 4px 16px rgba(200,169,110,0.3); }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 4px; padding: 8px; cursor: pointer; }
+    .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); }
+
+    /* LIGHT THEME PARTICLES */
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .particle { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(200,169,110,.25) 0%, transparent 70%); animation: floatUp linear infinite; }
+    @keyframes floatUp { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 10% { opacity: .7; } 90% { opacity: .3; } 100% { transform: translateY(-20vh) scale(1.2); opacity: 0; } }
+
+    /* HERO SECTION */
+    .hero { position: relative; z-index: 1; text-align: center; padding: 75px 40px 50px; overflow: hidden; background: linear-gradient(180deg, #f4f0e8 0%, var(--bg) 100%); border-bottom: 1px solid var(--border); }
+    .hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 900px; height: 450px; background: radial-gradient(ellipse, rgba(200,169,110,.18) 0%, transparent 70%); pointer-events: none; }
+    .hero-label { display: inline-flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: .2em; color: var(--gold-d); text-transform: uppercase; margin-bottom: 18px; }
+    .hero-label::before, .hero-label::after { content: ''; flex: 1; min-width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(38px, 6.5vw, 68px); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 16px; color: var(--ink); }
+    .hero h1 em { font-style: normal; color: var(--gold-d); }
+    .hero p { font-size: 15.5px; color: var(--ink-60); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+    
+    /* HERO STATS BAR */
+    .hero-stats { display: inline-flex; align-items: center; justify-content: center; gap: 40px; margin-top: 36px; padding: 18px 44px; background: #ffffff; border: 1px solid var(--border); border-radius: var(--r-pill); box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+    .stat { text-align: center; }
+    .stat-num { font-family: var(--serif); font-size: 26px; font-weight: 800; color: var(--ink); }
+    .stat-label { font-size: 10.5px; color: var(--ink-60); letter-spacing: .12em; text-transform: uppercase; margin-top: 2px; font-weight: 600; }
+    .stat-div { width: 1px; height: 32px; background: var(--border); }
+
+    /* GRID SECTION */
+    .grid-section { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 60px 40px 100px; }
+    .col-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    .col-card { position: relative; border-radius: var(--r); overflow: hidden; cursor: pointer; aspect-ratio: 16 / 10; background: #111; transition: transform .45s var(--ease), box-shadow .45s var(--ease); border: 1px solid var(--border); }
+    .col-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 20px 50px rgba(0,0,0,.15); }
+    .col-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease), filter .6s var(--ease); }
+    .col-card:hover img { transform: scale(1.07); filter: brightness(0.75); }
+    .col-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.25) 45%, transparent 70%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 30px; transition: background .4s var(--ease); }
+    .col-card:hover .col-overlay { background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.15) 100%); }
+    .col-badge { display: inline-block; align-self: flex-start; padding: 4px 12px; border-radius: 100px; background: rgba(200,169,110,.3); border: 1px solid rgba(200,169,110,.6); color: var(--gold-l); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; backdrop-filter: blur(8px); }
+    .col-title { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 6px; transition: color .3s; }
+    .col-card:hover .col-title { color: var(--gold-l); }
+    .col-desc { font-size: 13.5px; color: rgba(255,255,255,.75); line-height: 1.5; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .4s var(--ease), opacity .4s var(--ease); }
+    .col-card:hover .col-desc { max-height: 60px; opacity: 1; }
+    .col-cta { display: flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--gold); letter-spacing: .05em; opacity: 0; transform: translateY(8px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+    .col-cta svg { width: 16px; height: 16px; transition: transform .3s; }
+    .col-card:hover .col-cta { opacity: 1; transform: translateY(0); }
+    .col-card:hover .col-cta svg { transform: translateX(4px); }
+    .col-card::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.12) 50%, transparent 60%); transition: left .6s var(--ease); pointer-events: none; }
+    .col-card:hover::after { left: 150%; }
+    .new-tag { position: absolute; top: 18px; right: 18px; background: linear-gradient(135deg, var(--gold), var(--gold-d)); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .12em; padding: 5px 12px; border-radius: 100px; text-transform: uppercase; z-index: 2; box-shadow: 0 4px 12px rgba(200,169,110,.4); }
+
+    .bottom-cta { position: relative; z-index: 1; text-align: center; padding: 0 40px 90px; }
+    .btn-back { display: inline-flex; align-items: center; gap: 10px; padding: 15px 36px; border-radius: var(--r-pill); background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: all .3s var(--ease); cursor: pointer; }
+    .btn-back:hover { background: #333; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.22); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 15px 36px; border-radius: var(--r-pill); border: 1px solid var(--border); background: #fff; color: var(--ink); font-size: 13.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .3s var(--ease); cursor: pointer; margin-left: 16px; }
+    .btn-outline:hover { border-color: var(--ink); background: var(--bone); transform: translateY(-3px); }
+
+    /* FOOTER */
+    footer { background: var(--bone); border-top: 1px solid var(--border); padding: 50px 40px 30px; text-align: center; color: var(--ink-60); font-size: 13px; position: relative; z-index: 1; }
+    .footer-logo { font-family: var(--serif); font-size: 26px; font-weight: 700; letter-spacing: .12em; color: var(--ink); margin-bottom: 8px; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .05s; } .reveal.d2 { transition-delay: .1s; } .reveal.d3 { transition-delay: .15s; } .reveal.d4 { transition-delay: .2s; } .reveal.d5 { transition-delay: .25s; } .reveal.d6 { transition-delay: .3s; } .reveal.d7 { transition-delay: .35s; } .reveal.d8 { transition-delay: .4s; }
+
+    @media (max-width: 900px) {
+      .nav-center, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .header-inner { padding: 0 20px; }
+      .hero { padding: 50px 20px 40px; }
+      .hero-stats { gap: 16px; padding: 14px 24px; }
+      .grid-section { padding: 40px 20px 60px; }
+      .col-grid { grid-template-columns: 1fr; gap: 18px; }
+      .col-card { aspect-ratio: 4/3; }
+      .bottom-cta { padding: 0 20px 60px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      .btn-outline { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <!-- ANNOUNCEMENT TICKER BAR -->
+  <div class="announce" role="region" aria-label="Thông báo ưu đãi HMK">
+    <div class="announce-inner">
+      <span class="announce-item">Kiểm tra mắt miễn phí tại hệ thống cửa hàng</span>
+      <span class="announce-item">BỘ SƯU TẬP MỚI 2025 — Đặt hàng ngay hôm nay</span>
+      <span class="announce-item">Miễn phí vận chuyển cho đơn hàng trên 500.000₫</span>
+      <span class="announce-item">Bảo hành chính hãng 12 tháng</span>
+      <span class="announce-item">Kiểm tra mắt miễn phí tại hệ thống cửa hàng</span>
+      <span class="announce-item">BỘ SƯU TẬP MỚI 2025 — Đặt hàng ngay hôm nay</span>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION HEADER -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-inner">
+      <a href="index.html" class="nav-logo" aria-label="HMK Eyewear trang chủ">HMK</a>
+
+      <nav aria-label="Điều hướng chính">
+        <ul class="nav-center">
+          <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+          <li><a href="collections.html" class="nav-link active">Bộ Sưu Tập</a></li>
+          <li class="nav-item-drop">
+            <a href="index.html?page=gong-kinh" class="nav-link">Gọng Kính</a>
+            <div class="dropdown-menu">
+              <ul>
+                <li class="drop-title">CHẤT LIỆU</li>
+                <li><a href="index.html?page=gong-kinh">Nhựa Acetate</a></li>
+                <li><a href="index.html?page=gong-kinh">Kim Loại Titanium</a></li>
+                <li><a href="index.html?page=gong-kinh">Nhựa Ultem siêu nhẹ</a></li>
+              </ul>
+              <ul>
+                <li class="drop-title">KIỂU DÁNG</li>
+                <li><a href="index.html?page=gong-kinh">Kính Vuông</a></li>
+                <li><a href="index.html?page=gong-kinh">Kính Tròn</a></li>
+                <li><a href="index.html?page=gong-kinh">Mắt Mèo (Cat-eye)</a></li>
+                <li><a href="index.html?page=gong-kinh">Kính Đa Giác</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item-drop">
+            <a href="index.html?page=kinh-mat" class="nav-link">Kính Mát</a>
+            <div class="dropdown-menu single-col">
+              <ul>
+                <li class="drop-title">TÍNH NĂNG</li>
+                <li><a href="index.html?page=kinh-mat">Chống tia UV400</a></li>
+                <li><a href="index.html?page=kinh-mat">Phân cực (Polarized)</a></li>
+                <li><a href="index.html?page=kinh-mat">Tròng tráng gương</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item-drop">
+            <a href="index.html?page=trong-kinh" class="nav-link">Tròng Kính</a>
+            <div class="dropdown-menu single-col">
+              <ul>
+                <li class="drop-title">THƯƠNG HIỆU</li>
+                <li><a href="index.html?page=trong-kinh">Essilor (Pháp)</a></li>
+                <li><a href="index.html?page=trong-kinh">Chemi (Hàn Quốc)</a></li>
+                <li><a href="index.html?page=trong-kinh">Kodak (Mỹ)</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="index.html?page=about" class="nav-link">Về HMK</a></li>
+          <li><a href="index.html?page=blog" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <button class="nav-icon" aria-label="Tìm kiếm sản phẩm" onclick="location.href='index.html'">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon" aria-label="Giỏ hàng cá nhân" style="position:relative" onclick="location.href='index.html'">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">2</span>
+        </button>
+        <button class="nav-icon" aria-label="Tài khoản người dùng" onclick="location.href='index.html'">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </button>
+        <a href="index.html?page=gong-kinh" class="nav-link nav-cta">Mua Ngay</a>
+        <div class="hamburger nav-icon" onclick="location.href='index.html'" aria-label="Mở menu di động">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <div class="hero-label"><span></span>Bộ Sưu Tập HMK Eyewear<span></span></div>
+    <h1>8 Bộ Sưu Tập<br><em>Độc Quyền 2025</em></h1>
+    <p>Mỗi bộ sưu tập là một câu chuyện riêng — từ tinh hoa Á Đông đến phong cách đường phố hiện đại</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Bộ Sưu Tập</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Mẫu Kính</div></div>
+      <div class="stat-div"></div>
+      <div class="stat"><div class="stat-num">2025</div><div class="stat-label">New Season</div></div>
+    </div>
+  </section>
+
+  <!-- GRID SECTION -->
+  <main class="grid-section">
+    <div class="col-grid">
+
+      <article class="col-card reveal d1" onclick="goTo('gong-kinh')" tabindex="0" role="link">
+        <span class="new-tag">Mới 2025</span>
+        <img src="assets/col_mongnhan.webp" alt="HMK Mộng Nhãn Tinh Hoa" loading="eager" />
+        <div class="col-overlay">
+          <span class="col-badge">Á Đông Tinh Hoa</span>
+          <h2 class="col-title">Mộng Nhãn Tinh Hoa</h2>
+          <p class="col-desc">Thiết kế gọng kính tinh xảo, tôn vinh nét đẹp Á Đông thanh lịch và trường tồn.</p>
+          <div class="col-cta">Khám Phá Ngay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d2" onclick="goTo('kinh-mat')" tabindex="0" role="link">
+        <img src="assets/col_shades.webp" alt="HMK Shades of Brilliance" loading="eager" />
+        <div class="col-overlay">
+          <span class="col-badge">Kính Mát UV400</span>
+          <h2 class="col-title">Shades of Brilliance</h2>
+          <p class="col-desc">Những thiết kế kính mát chống tia UV400 thời thượng và rực rỡ nhất mùa hè.</p>
+          <div class="col-cta">Xem Kính Mát <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d3" onclick="goTo('gong-kinh')" tabindex="0" role="link">
+        <img src="assets/col_aurora.webp" alt="HMK Aurora Alloy" loading="lazy" />
+        <div class="col-overlay">
+          <span class="col-badge">Titanium Alloy</span>
+          <h2 class="col-title">Aurora Alloy</h2>
+          <p class="col-desc">Chất liệu hợp kim titan siêu nhẹ, thanh thoát và siêu bền bỉ theo năm tháng.</p>
+          <div class="col-cta">Xem Gọng Kính <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d4" onclick="goTo('gong-kinh')" tabindex="0" role="link">
+        <span class="new-tag" style="background:linear-gradient(135deg,#e84545,#c02020)">HOT</span>
+        <img src="assets/col_redvelvet.webp" alt="HMK Red Velvet Vision" loading="lazy" />
+        <div class="col-overlay">
+          <span class="col-badge">Phong Cách</span>
+          <h2 class="col-title">Red Velvet Vision</h2>
+          <p class="col-desc">Cảm hứng thời trang ấn tượng, cá tính và quyến rũ vượt thời gian.</p>
+          <div class="col-cta">Khám Phá Ngay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d5" onclick="goTo('gong-kinh')" tabindex="0" role="link">
+        <img src="assets/col_therock.jpg" alt="HMK The Rock Collection" loading="lazy" />
+        <div class="col-overlay">
+          <span class="col-badge">Hot Trend</span>
+          <h2 class="col-title">The Rock Collection</h2>
+          <p class="col-desc">Dáng gọng góc cạnh mạnh mẽ, thể hiện bản lĩnh và khí chất hiện đại.</p>
+          <div class="col-cta">Xem Bộ Sưu Tập <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d6" onclick="goTo('kinh-mat')" tabindex="0" role="link">
+        <img src="assets/col_witching.webp" alt="HMK Witching Aura" loading="lazy" />
+        <div class="col-overlay">
+          <span class="col-badge">Độc Bản</span>
+          <h2 class="col-title">Witching Aura</h2>
+          <p class="col-desc">Vẻ đẹp huyền bí với những đường nét uốn lượn cuốn hút khó cưỡng.</p>
+          <div class="col-cta">Khám Phá Ngay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d7" onclick="goTo('gong-kinh')" tabindex="0" role="link">
+        <img src="assets/col_disco.webp" alt="HMK Disco Dream" loading="lazy" />
+        <div class="col-overlay">
+          <span class="col-badge">Retro 80s</span>
+          <h2 class="col-title">Disc Dream</h2>
+          <p class="col-desc">Sự trở lại của phong cách kính vintage thập niên 80 đầy hoài niệm.</p>
+          <div class="col-cta">Xem Sản Phẩm <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+      <article class="col-card reveal d8" onclick="goTo('gong-kinh')" tabindex="0" role="link">
+        <span class="new-tag" style="background:linear-gradient(135deg,#e87f7f,#c04040)">For Her</span>
+        <img src="assets/col_indegirl.webp" alt="HMK Inde Girl" loading="lazy" />
+        <div class="col-overlay">
+          <span class="col-badge">Dành Cho Nữ</span>
+          <h2 class="col-title">Inde Girl</h2>
+          <p class="col-desc">Gọng kính dành riêng cho phái đẹp yêu thích tự do và phong cách tự tin.</p>
+          <div class="col-cta">Khám Phá Ngay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <div class="bottom-cta">
+    <a href="index.html" class="btn-back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Về Trang Chủ
+    </a>
+    <a href="index.html?page=gong-kinh" class="btn-outline">Mua Sắm Ngay →</a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">HMK EYEWEAR</div>
+    <p>&copy; 2025 HMK Eyewear — Care your eyes, style your life</p>
+  </footer>
+
+  <script>
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = 80 + Math.random() * 200;
+      p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${12+Math.random()*20}s;animation-delay:-${Math.random()*20}s;`;
+      container.appendChild(p);
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.col-card[tabindex]').forEach(card => {
+      card.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); card.click(); } });
+    });
+    function goTo(page) { window.location.href = 'index.html?page=' + page; }
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "p1",
+    "name": "Aura Titanium",
+    "category": "gong-kinh",
+    "price": 850000,
+    "material": "Titanium",
+    "shape": "Tròn",
+    "gender": "Unisex",
+    "badge": "Mới",
+    "image": "assets/p1.png",
+    "colors": ["#c8a96e", "#1a1a1a"]
+  },
+  {
+    "id": "p2",
+    "name": "Noir Architect",
+    "category": "gong-kinh",
+    "price": 1250000,
+    "material": "Nhựa Acetate",
+    "shape": "Vuông",
+    "gender": "Nam",
+    "badge": "Hot",
+    "image": "assets/p2.png",
+    "colors": ["#1a1a1a", "#5a3a1a"]
+  },
+  {
+    "id": "p3",
+    "name": "Havanna Chic",
+    "category": "gong-kinh",
+    "price": 990000,
+    "material": "Nhựa Acetate",
+    "shape": "Mắt Mèo",
+    "gender": "Nữ",
+    "badge": "Mới",
+    "image": "assets/p4.png",
+    "colors": ["#7a4a1a", "#1a1a1a"]
+  },
+  {
+    "id": "p4",
+    "name": "Crystal Clear",
+    "category": "gong-kinh",
+    "price": 760000,
+    "material": "Nhựa Ultem",
+    "shape": "Tròn",
+    "gender": "Unisex",
+    "badge": null,
+    "image": "assets/p4.png",
+    "colors": ["rgba(200,200,220,0.6)"]
+  },
+  {
+    "id": "p5",
+    "name": "Metro Square",
+    "category": "gong-kinh",
+    "price": 890000,
+    "material": "Thép Không Gỉ",
+    "shape": "Vuông",
+    "gender": "Nam",
+    "badge": "-15%",
+    "image": "assets/p5.png",
+    "colors": ["#1a1a1a", "#c8a96e"]
+  },
+  {
+    "id": "p6",
+    "name": "Sage Minimal",
+    "category": "gong-kinh",
+    "price": 1100000,
+    "material": "Nhựa Acetate",
+    "shape": "Chữ Nhật",
+    "gender": "Unisex",
+    "badge": null,
+    "image": "assets/p5.png",
+    "colors": ["#6a7a5a", "#c8a96e", "#1a1a1a"]
+  }
+]
