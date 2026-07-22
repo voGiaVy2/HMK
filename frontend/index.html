@@ -1562,33 +1562,86 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
   transition: all 0.4s var(--ease);
 }
 
-/* Optical Filter Simulations */
+/* Optical Filter Simulations & Daylight Pass */
+.ba-sunbeam {
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,235,170,0.55) 0%, rgba(255,190,90,0.2) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 15;
+  mix-blend-mode: screen;
+  animation: pulseSun 6s ease-in-out infinite alternate;
+}
+@keyframes pulseSun {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.75; }
+  100% { transform: scale(1.15) translate(25px, 25px); opacity: 0.95; }
+}
+
+/* Mode 1: Daylight Sun & Blue Light Filter (Amber Tint Pass + Violet AR Reflection) */
 .ba-stage[data-mode="blue"] .ba-filter-before {
-  background: radial-gradient(circle, rgba(59,130,246,0.4) 0%, rgba(29,78,216,0.2) 100%);
-  filter: blur(1.2px) contrast(0.9);
+  background: linear-gradient(135deg, rgba(255,245,210,0.65) 0%, rgba(255,220,180,0.35) 60%, rgba(100,150,255,0.25) 100%);
+  filter: brightness(1.45) blur(1.5px) contrast(0.85);
 }
 .ba-stage[data-mode="blue"] .ba-filter-after {
-  background: linear-gradient(135deg, rgba(200,169,110,0.15) 0%, rgba(0,0,0,0.05) 100%);
-  backdrop-filter: contrast(1.1) saturate(1.12);
+  background: linear-gradient(135deg, rgba(212, 160, 68, 0.24) 0%, rgba(185, 138, 48, 0.14) 60%, rgba(160, 100, 255, 0.1) 100%);
+  backdrop-filter: contrast(1.15) saturate(1.12) brightness(0.98);
+}
+.ba-stage[data-mode="blue"] .ba-filter-after::after {
+  content: '';
+  position: absolute;
+  top: 15px; right: 15px;
+  width: 90px; height: 90px;
+  background: radial-gradient(circle, rgba(160,100,255,0.35) 0%, transparent 70%);
+  pointer-events: none;
 }
 
+/* Mode 2: Sun Transitions Tints */
 .ba-stage[data-mode="sun"] .ba-filter-before {
-  background: rgba(255, 245, 210, 0.5);
-  filter: brightness(1.4) contrast(0.8);
+  background: rgba(255, 245, 210, 0.6);
+  filter: brightness(1.45) contrast(0.8);
 }
-.ba-stage[data-mode="sun"] .ba-filter-after {
-  background: rgba(20, 18, 15, 0.55);
+.ba-stage[data-mode="sun"][data-tint="gray"] .ba-filter-after {
+  background: rgba(35, 38, 42, 0.62);
   backdrop-filter: contrast(1.18) saturate(1.05);
 }
+.ba-stage[data-mode="sun"][data-tint="brown"] .ba-filter-after {
+  background: rgba(85, 48, 25, 0.6);
+  backdrop-filter: contrast(1.2) saturate(1.18);
+}
+.ba-stage[data-mode="sun"][data-tint="green"] .ba-filter-after {
+  background: rgba(30, 65, 45, 0.6);
+  backdrop-filter: contrast(1.16) saturate(1.1);
+}
 
+/* Mode 3: Night Anti-Glare */
 .ba-stage[data-mode="night"] .ba-filter-before {
-  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.75) 0%, rgba(255,200,100,0.45) 30%, rgba(0,0,0,0.4) 100%);
+  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.78) 0%, rgba(255,200,100,0.48) 30%, rgba(0,0,0,0.4) 100%);
   filter: blur(1.8px) brightness(1.25);
 }
 .ba-stage[data-mode="night"] .ba-filter-after {
   background: rgba(10, 15, 25, 0.15);
   backdrop-filter: contrast(1.25) brightness(0.95);
 }
+
+/* Color Swatches for Sun Mode */
+.ba-color-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+.picker-label { font-size: 11.5px; font-weight: 700; color: var(--gold-d); text-transform: uppercase; letter-spacing: 0.08em; }
+.ba-swatch {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  cursor: pointer; transition: all 0.2s; outline: none;
+}
+.ba-swatch:hover { transform: scale(1.15); }
+.ba-swatch.active { transform: scale(1.25); border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
 
 .ba-badge {
   position: absolute;
@@ -2457,80 +2510,91 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
     </div>
   </div>
 
-  <!-- BEFORE / AFTER LENS COMPARISON SLIDER -->
-  <div class="ba-slider-sec" role="region" aria-label="So sánh hiệu quả tròng kính HMK">
+  <!-- BEFORE / AFTER LENS COMPARISON SLIDER (REALISTIC DAYLIGHT SIMULATOR) -->
+  <div class="ba-slider-sec" role="region" aria-label="So sánh hiệu quả tròng kính HMK ban ngày">
     <div class="wrap" style="padding-bottom:0">
       <div class="sec-head center">
-        <div class="label">TRẢI NGHIỆM TRỰC QUAN TRÒNG KÍNH</div>
-        <h2 class="h2">Cảm Nhận Sự Khác Biệt <em>Trực Tiếp</em></h2>
-        <p class="sub-text">Kéo thanh trượt qua lại để trải nghiệm hiệu quả thực tế của tròng kính HMK so với tròng thông thường</p>
+        <div class="label">MÔ PHỎNG QUANG HỌC BAN NGÀY</div>
+        <h2 class="h2">Ánh Sáng Chiếu Qua <em>Tròng Kính HMK</em></h2>
+        <p class="sub-text">Xem trực tiếp màu sắc &amp; độ dịu mát của ánh nắng ban ngày khi truyền qua tròng kính cao cấp HMK</p>
         
         <!-- Lens Mode Tabs -->
         <div class="ba-tabs" role="tablist">
           <button class="ba-tab active" data-tab="blue">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Chống Ánh Sáng Xanh
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            Ánh Nắng &amp; Ánh Sáng Xanh
           </button>
           <button class="ba-tab" data-tab="sun">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-            Đổi Màu Nắng (UV400)
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            Tròng Đổi Màu Ra Nắng
           </button>
           <button class="ba-tab" data-tab="night">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-            Chống Lóa Đêm
+            Chống Chói Đèn Xe Đêm
           </button>
+        </div>
+
+        <!-- Color Swatches for Sun Mode -->
+        <div class="ba-color-picker" style="display:none">
+          <span class="picker-label">Chọn Màu Đổi Tròng Nắng:</span>
+          <button class="ba-swatch active" data-color="gray" style="background:#3a3a3c" title="Xám Khói Classic"></button>
+          <button class="ba-swatch" data-color="brown" style="background:#5c3a21" title="Nâu Trà Đắng"></button>
+          <button class="ba-swatch" data-color="green" style="background:#2a4a36" title="Xanh Rêu Thảo Mộc"></button>
         </div>
       </div>
 
       <!-- Interactive Comparison Widget -->
       <div class="ba-card">
-        <div class="ba-stage" id="baStage" data-mode="blue">
+        <div class="ba-stage" data-mode="blue" data-tint="gray">
+          <!-- Daylight Sunbeam Layer -->
+          <div class="ba-sunbeam"></div>
+
           <!-- Before Layer -->
           <div class="ba-layer ba-before">
-            <img src="assets/banner1.jpg" alt="Trước khi đeo tròng kính HMK" class="ba-img" id="baImgBefore" />
-            <div class="ba-filter-overlay ba-filter-before" id="baOverlayBefore"></div>
-            <span class="ba-badge ba-badge-before">MẮT THƯỜNG / KHÔNG CÓ TRÒNG HMK</span>
+            <img src="assets/banner1.jpg" alt="Trước khi đeo tròng kính HMK" class="ba-img ba-img-before" />
+            <div class="ba-filter-overlay ba-filter-before"></div>
+            <span class="ba-badge ba-badge-before">MẮT THƯỜNG — CHÓI NẮNG &amp; GẮT MẮT</span>
           </div>
 
           <!-- After Layer -->
-          <div class="ba-layer ba-after" id="baAfterLayer">
-            <img src="assets/banner1.jpg" alt="Khi đeo tròng kính HMK" class="ba-img" id="baImgAfter" />
-            <div class="ba-filter-overlay ba-filter-after" id="baOverlayAfter"></div>
-            <span class="ba-badge ba-badge-after">KHI ĐEO TRÒNG KÍNH HMK</span>
+          <div class="ba-layer ba-after">
+            <img src="assets/banner1.jpg" alt="Khi đeo tròng kính HMK" class="ba-img ba-img-after" />
+            <div class="ba-filter-overlay ba-filter-after"></div>
+            <span class="ba-badge ba-badge-after">QUA TRÒNG HMK — ẤM DỊU &amp; SẮC NÉT</span>
           </div>
 
           <!-- Drag Line / Handle -->
-          <div class="ba-divider" id="baDivider">
+          <div class="ba-divider">
             <div class="ba-handle-btn">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
             </div>
           </div>
 
           <!-- Range Input Controller -->
-          <input type="range" min="0" max="100" value="50" class="ba-range-input" id="baRangeInput" aria-label="Thanh kéo so sánh trước và sau khi đeo kính" />
+          <input type="range" min="0" max="100" value="50" class="ba-range-input" aria-label="Thanh kéo so sánh ánh sáng chiếu qua kính ban ngày" />
         </div>
 
         <!-- Feature Description Bar Below Slider -->
         <div class="ba-desc-bar">
-          <div class="ba-desc-item active" id="desc-blue">
-            <div class="ba-desc-icon">💻</div>
-            <div>
-              <h4>HMK Blue Shield — Chống Ánh Sáng Xanh Điện Tử</h4>
-              <p>Loại bỏ 99% ánh sáng xanh có hại từ màn hình máy tính &amp; điện thoại, giảm nhức mỏi mắt, khô mắt và bảo vệ võng mạc tối đa khi làm việc ban đêm.</p>
-            </div>
-          </div>
-          <div class="ba-desc-item" id="desc-sun">
+          <div class="ba-desc-item desc-blue active">
             <div class="ba-desc-icon">☀️</div>
             <div>
-              <h4>Essilor Transitions Gen8 — Đổi Màu Nắng Siêu Nhanh</h4>
-              <p>Tròng kính tự động cảm biến tia UV và chuyển đổi màu sẫm quyến rũ chỉ trong 15 giây khi ra nắng, vừa chống lóa mắt vừa thay thế kính mát thời thượng.</p>
+              <h4>Màu Sắc Ánh Sáng Khi Chiếu Qua Tròng HMK Blue Shield</h4>
+              <p>Ánh nắng chói gắt ban ngày và ánh sáng xanh khi qua tròng HMK sẽ được **lọc ngả sang sắc Vàng Mật Mặn Dịu (Warm Amber Tint)**, triệt tiêu tia tử ngoại UV400, giúp mắt dịu mát tức thì và màu sắc cảnh vật chân thật không bị chói mắt.</p>
             </div>
           </div>
-          <div class="ba-desc-item" id="desc-night">
+          <div class="ba-desc-item desc-sun">
+            <div class="ba-desc-icon">🕶️</div>
+            <div>
+              <h4>Màu Sắc Tròng Đổi Màu Essilor Transitions Gen8 Khi Ra Nắng</h4>
+              <p>Khi gặp tia UV mặt trời ban ngày, tròng kính tự động ngả sang màu **Xám Khói, Nâu Trà hoặc Xanh Rêu** như một chiếc kính mát thời trang cao cấp, bảo vệ mắt 100% khỏi ánh nắng gắt.</p>
+            </div>
+          </div>
+          <div class="ba-desc-item desc-night">
             <div class="ba-desc-icon">🌙</div>
             <div>
-              <h4>HMK Night Vision — Chống Lóa Đèn Xe Đêm</h4>
-              <p>Lớp phủ chống phản quang đa lớp Crizal Rock cắt giảm vệt chói từ đèn pha xe ngược chiều khi đi đêm, mang lại tầm nhìn trong suốt &amp; an toàn khi lái xe.</p>
+              <h4>Màu Sắc Ánh Đèn Qua Tròng Chống Lóa Crizal Rock</h4>
+              <p>Vệt chói từ ánh đèn xe ban đêm được lọc qua lớp phủ quang học màu Tím Ngọc AR, cho hình ảnh trong trẻo, không bị quầng lóa hay vệt nhòe.</p>
             </div>
           </div>
         </div>
@@ -2768,46 +2832,57 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
     </div>
   </div>
 
-  <!-- BEFORE / AFTER LENS COMPARISON SLIDER -->
-  <div class="ba-slider-sec" role="region" aria-label="So sánh hiệu quả tròng kính HMK">
+  <!-- BEFORE / AFTER LENS COMPARISON SLIDER (REALISTIC DAYLIGHT SIMULATOR) -->
+  <div class="ba-slider-sec" role="region" aria-label="So sánh hiệu quả tròng kính HMK ban ngày">
     <div class="wrap" style="padding-bottom:0">
       <div class="sec-head center">
-        <div class="label">TRẢI NGHIỆM TRỰC QUAN TRÒNG KÍNH</div>
-        <h2 class="h2">Cảm Nhận Sự Khác Biệt <em>Trực Tiếp</em></h2>
-        <p class="sub-text">Kéo thanh trượt qua lại để trải nghiệm hiệu quả thực tế của tròng kính HMK so với tròng thông thường</p>
+        <div class="label">MÔ PHỎNG QUANG HỌC BAN NGÀY</div>
+        <h2 class="h2">Ánh Sáng Chiếu Qua <em>Tròng Kính HMK</em></h2>
+        <p class="sub-text">Xem trực tiếp màu sắc &amp; độ dịu mát của ánh nắng ban ngày khi truyền qua tròng kính cao cấp HMK</p>
         
         <!-- Lens Mode Tabs -->
         <div class="ba-tabs" role="tablist">
           <button class="ba-tab active" data-tab="blue">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Chống Ánh Sáng Xanh
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            Ánh Nắng &amp; Ánh Sáng Xanh
           </button>
           <button class="ba-tab" data-tab="sun">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-            Đổi Màu Nắng (UV400)
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            Tròng Đổi Màu Ra Nắng
           </button>
           <button class="ba-tab" data-tab="night">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-            Chống Lóa Đêm
+            Chống Chói Đèn Xe Đêm
           </button>
+        </div>
+
+        <!-- Color Swatches for Sun Mode -->
+        <div class="ba-color-picker" style="display:none">
+          <span class="picker-label">Chọn Màu Đổi Tròng Nắng:</span>
+          <button class="ba-swatch active" data-color="gray" style="background:#3a3a3c" title="Xám Khói Classic"></button>
+          <button class="ba-swatch" data-color="brown" style="background:#5c3a21" title="Nâu Trà Đắng"></button>
+          <button class="ba-swatch" data-color="green" style="background:#2a4a36" title="Xanh Rêu Thảo Mộc"></button>
         </div>
       </div>
 
       <!-- Interactive Comparison Widget -->
       <div class="ba-card">
-        <div class="ba-stage" data-mode="blue">
+        <div class="ba-stage" data-mode="blue" data-tint="gray">
+          <!-- Daylight Sunbeam Layer -->
+          <div class="ba-sunbeam"></div>
+
           <!-- Before Layer -->
           <div class="ba-layer ba-before">
             <img src="assets/banner1.jpg" alt="Trước khi đeo tròng kính HMK" class="ba-img ba-img-before" />
             <div class="ba-filter-overlay ba-filter-before"></div>
-            <span class="ba-badge ba-badge-before">MẮT THƯỜNG / KHÔNG CÓ TRÒNG HMK</span>
+            <span class="ba-badge ba-badge-before">MẮT THƯỜNG — CHÓI NẮNG &amp; GẮT MẮT</span>
           </div>
 
           <!-- After Layer -->
           <div class="ba-layer ba-after">
             <img src="assets/banner1.jpg" alt="Khi đeo tròng kính HMK" class="ba-img ba-img-after" />
             <div class="ba-filter-overlay ba-filter-after"></div>
-            <span class="ba-badge ba-badge-after">KHI ĐEO TRÒNG KÍNH HMK</span>
+            <span class="ba-badge ba-badge-after">QUA TRÒNG HMK — ẤM DỊU &amp; SẮC NÉT</span>
           </div>
 
           <!-- Drag Line / Handle -->
@@ -2818,30 +2893,30 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
           </div>
 
           <!-- Range Input Controller -->
-          <input type="range" min="0" max="100" value="50" class="ba-range-input" aria-label="Thanh kéo so sánh trước và sau khi đeo kính" />
+          <input type="range" min="0" max="100" value="50" class="ba-range-input" aria-label="Thanh kéo so sánh ánh sáng chiếu qua kính ban ngày" />
         </div>
 
         <!-- Feature Description Bar Below Slider -->
         <div class="ba-desc-bar">
           <div class="ba-desc-item desc-blue active">
-            <div class="ba-desc-icon">💻</div>
+            <div class="ba-desc-icon">☀️</div>
             <div>
-              <h4>HMK Blue Shield — Chống Ánh Sáng Xanh Điện Tử</h4>
-              <p>Loại bỏ 99% ánh sáng xanh có hại từ màn hình máy tính &amp; điện thoại, giảm nhức mỏi mắt, khô mắt và bảo vệ võng mạc tối đa khi làm việc ban đêm.</p>
+              <h4>Màu Sắc Ánh Sáng Khi Chiếu Qua Tròng HMK Blue Shield</h4>
+              <p>Ánh nắng chói gắt ban ngày và ánh sáng xanh khi qua tròng HMK sẽ được **lọc ngả sang sắc Vàng Mật Mặn Dịu (Warm Amber Tint)**, triệt tiêu tia tử ngoại UV400, giúp mắt dịu mát tức thì và màu sắc cảnh vật chân thật không bị chói mắt.</p>
             </div>
           </div>
           <div class="ba-desc-item desc-sun">
-            <div class="ba-desc-icon">☀️</div>
+            <div class="ba-desc-icon">🕶️</div>
             <div>
-              <h4>Essilor Transitions Gen8 — Đổi Màu Nắng Siêu Nhanh</h4>
-              <p>Tròng kính tự động cảm biến tia UV và chuyển đổi màu sẫm quyến rũ chỉ trong 15 giây khi ra nắng, vừa chống lóa mắt vừa thay thế kính mát thời thượng.</p>
+              <h4>Màu Sắc Tròng Đổi Màu Essilor Transitions Gen8 Khi Ra Nắng</h4>
+              <p>Khi gặp tia UV mặt trời ban ngày, tròng kính tự động ngả sang màu **Xám Khói, Nâu Trà hoặc Xanh Rêu** như một chiếc kính mát thời trang cao cấp, bảo vệ mắt 100% khỏi ánh nắng gắt.</p>
             </div>
           </div>
           <div class="ba-desc-item desc-night">
             <div class="ba-desc-icon">🌙</div>
             <div>
-              <h4>HMK Night Vision — Chống Lóa Đèn Xe Đêm</h4>
-              <p>Lớp phủ chống phản quang đa lớp Crizal Rock cắt giảm vệt chói từ đèn pha xe ngược chiều khi đi đêm, mang lại tầm nhìn trong suốt &amp; an toàn khi lái xe.</p>
+              <h4>Màu Sắc Ánh Đèn Qua Tròng Chống Lóa Crizal Rock</h4>
+              <p>Vệt chói từ ánh đèn xe ban đêm được lọc qua lớp phủ quang học màu Tím Ngọc AR, cho hình ảnh trong trẻo, không bị quầng lóa hay vệt nhòe.</p>
             </div>
           </div>
         </div>
@@ -4287,20 +4362,22 @@ function closeMobFilter() {
 
 })(); /* ---- END RAINING GLASSES ---- */
 
-/* ---- BEFORE / AFTER LENS SLIDER ---- */
+/* ---- BEFORE / AFTER LENS SLIDER (REALISTIC DAYLIGHT SIMULATOR) ---- */
 (function() {
   const baSections = document.querySelectorAll('.ba-slider-sec');
   if (!baSections.length) return;
 
   baSections.forEach(sec => {
-    const rangeInput = sec.querySelector('.ba-range-input');
-    const afterLayer = sec.querySelector('.ba-after');
-    const divider    = sec.querySelector('.ba-divider');
-    const stage      = sec.querySelector('.ba-stage');
-    const tabs       = sec.querySelectorAll('.ba-tab');
-    const descItems  = sec.querySelectorAll('.ba-desc-item');
-    const imgBefore  = sec.querySelector('.ba-img-before');
-    const imgAfter   = sec.querySelector('.ba-img-after');
+    const rangeInput  = sec.querySelector('.ba-range-input');
+    const afterLayer  = sec.querySelector('.ba-after');
+    const divider     = sec.querySelector('.ba-divider');
+    const stage       = sec.querySelector('.ba-stage');
+    const tabs        = sec.querySelectorAll('.ba-tab');
+    const descItems   = sec.querySelectorAll('.ba-desc-item');
+    const imgBefore   = sec.querySelector('.ba-img-before');
+    const imgAfter    = sec.querySelector('.ba-img-after');
+    const colorPicker = sec.querySelector('.ba-color-picker');
+    const swatches    = sec.querySelectorAll('.ba-swatch');
 
     if (!rangeInput || !afterLayer || !divider) return;
 
@@ -4324,6 +4401,11 @@ function closeMobFilter() {
         const mode = tab.getAttribute('data-tab');
         if (stage) stage.setAttribute('data-mode', mode);
 
+        // Toggle Color Swatches for Sun Mode
+        if (colorPicker) {
+          colorPicker.style.display = (mode === 'sun') ? 'flex' : 'none';
+        }
+
         descItems.forEach(item => {
           item.classList.remove('active');
           if (item.classList.contains('desc-' + mode)) item.classList.add('active');
@@ -4333,6 +4415,17 @@ function closeMobFilter() {
           if (imgBefore) imgBefore.src = imagesByMode[mode].before;
           if (imgAfter)  imgAfter.src  = imagesByMode[mode].after;
         }
+      });
+    });
+
+    // Color Swatch Selection for Sun Mode
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        swatches.forEach(s => s.classList.remove('active'));
+        swatch.classList.add('active');
+
+        const color = swatch.getAttribute('data-color');
+        if (stage) stage.setAttribute('data-tint', color);
       });
     });
   });
