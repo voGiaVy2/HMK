@@ -211,7 +211,7 @@ header.main-header.scrolled {
   box-shadow: 0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(200,169,110,0.15) !important;
 }
 .prod-badge {
-  z-index: 10 !important;
+  display: none !important;
 }
 .prod-cat {
   color: var(--gold-d);
