@@ -1472,6 +1472,222 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
 .s-close { position: absolute; top: 30px; right: 40px; font-size: 26px; cursor: pointer; color: var(--mid); }
 
 /* =============================================
+   BEFORE / AFTER LENS COMPARISON SLIDER
+============================================= */
+.ba-slider-sec {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #faf8f5 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+.sec-head.center { text-align: center; margin-bottom: 36px; }
+.sec-head .sub-text { font-size: 14.5px; color: var(--ink-60); max-width: 600px; margin: 8px auto 0; }
+
+.ba-tabs {
+  display: inline-flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 6px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ba-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--r-pill);
+  border: none;
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink-60);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+.ba-tab svg { width: 16px; height: 16px; stroke-width: 1.8; }
+.ba-tab:hover { color: var(--ink); background: rgba(255,255,255,0.6); }
+.ba-tab.active {
+  background: var(--ink);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.ba-card {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+}
+.ba-stage {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 14px;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+  background: #0e0e0e;
+}
+@media (max-width: 768px) {
+  .ba-stage { height: 320px; }
+  .ba-tabs { width: 100%; }
+  .ba-tab { flex: 1; text-align: center; justify-content: center; padding: 8px 12px; font-size: 11px; }
+}
+
+.ba-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ba-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ba-filter-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: all 0.4s var(--ease);
+}
+
+/* Optical Filter Simulations */
+.ba-stage[data-mode="blue"] .ba-filter-before {
+  background: radial-gradient(circle, rgba(59,130,246,0.4) 0%, rgba(29,78,216,0.2) 100%);
+  filter: blur(1.2px) contrast(0.9);
+}
+.ba-stage[data-mode="blue"] .ba-filter-after {
+  background: linear-gradient(135deg, rgba(200,169,110,0.15) 0%, rgba(0,0,0,0.05) 100%);
+  backdrop-filter: contrast(1.1) saturate(1.12);
+}
+
+.ba-stage[data-mode="sun"] .ba-filter-before {
+  background: rgba(255, 245, 210, 0.5);
+  filter: brightness(1.4) contrast(0.8);
+}
+.ba-stage[data-mode="sun"] .ba-filter-after {
+  background: rgba(20, 18, 15, 0.55);
+  backdrop-filter: contrast(1.18) saturate(1.05);
+}
+
+.ba-stage[data-mode="night"] .ba-filter-before {
+  background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.75) 0%, rgba(255,200,100,0.45) 30%, rgba(0,0,0,0.4) 100%);
+  filter: blur(1.8px) brightness(1.25);
+}
+.ba-stage[data-mode="night"] .ba-filter-after {
+  background: rgba(10, 15, 25, 0.15);
+  backdrop-filter: contrast(1.25) brightness(0.95);
+}
+
+.ba-badge {
+  position: absolute;
+  top: 16px;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+.ba-badge-before {
+  left: 16px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ff8888;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.ba-badge-after {
+  right: 16px;
+  background: rgba(200, 169, 110, 0.95);
+  color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.ba-after {
+  width: 50%;
+  right: 0;
+  left: auto;
+  border-left: 2px solid var(--gold);
+}
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--gold);
+  z-index: 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+  box-shadow: 0 0 14px rgba(200, 169, 110, 0.9);
+}
+.ba-handle-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #1a1a1a;
+  border: 3px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+.ba-handle-btn svg { width: 20px; height: 20px; stroke-width: 2.5; }
+
+.ba-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 20;
+  margin: 0;
+}
+
+.ba-desc-bar {
+  margin-top: 20px;
+  padding: 16px 22px;
+  background: var(--off);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.ba-desc-item {
+  display: none;
+  align-items: flex-start;
+  gap: 16px;
+}
+.ba-desc-item.active { display: flex; }
+.ba-desc-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+.ba-desc-item h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.ba-desc-item p { font-size: 13.5px; color: var(--ink-60); line-height: 1.6; }
+
+/* =============================================
    MOBILE FILTER DRAWER & TRIGGER BUTTON
 ============================================= */
 .mob-filter-btn {
@@ -2238,6 +2454,87 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
         <li class="check-item"><span class="chk" aria-hidden="true">✓</span> Đội ngũ kỹ thuật viên giàu kinh nghiệm</li>
       </ul>
       <a href="#" class="btn btn-dark nav-link" data-page="about">Tìm Hiểu Về HMK →</a>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER LENS COMPARISON SLIDER -->
+  <div class="ba-slider-sec" role="region" aria-label="So sánh hiệu quả tròng kính HMK">
+    <div class="wrap" style="padding-bottom:0">
+      <div class="sec-head center">
+        <div class="label">TRẢI NGHIỆM TRỰC QUAN TRÒNG KÍNH</div>
+        <h2 class="h2">Cảm Nhận Sự Khác Biệt <em>Trực Tiếp</em></h2>
+        <p class="sub-text">Kéo thanh trượt qua lại để trải nghiệm hiệu quả thực tế của tròng kính HMK so với tròng thông thường</p>
+        
+        <!-- Lens Mode Tabs -->
+        <div class="ba-tabs" role="tablist">
+          <button class="ba-tab active" data-tab="blue">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Chống Ánh Sáng Xanh
+          </button>
+          <button class="ba-tab" data-tab="sun">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            Đổi Màu Nắng (UV400)
+          </button>
+          <button class="ba-tab" data-tab="night">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            Chống Lóa Đêm
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Comparison Widget -->
+      <div class="ba-card">
+        <div class="ba-stage" id="baStage" data-mode="blue">
+          <!-- Before Layer -->
+          <div class="ba-layer ba-before">
+            <img src="assets/banner1.jpg" alt="Trước khi đeo tròng kính HMK" class="ba-img" id="baImgBefore" />
+            <div class="ba-filter-overlay ba-filter-before" id="baOverlayBefore"></div>
+            <span class="ba-badge ba-badge-before">MẮT THƯỜNG / KHÔNG CÓ TRÒNG HMK</span>
+          </div>
+
+          <!-- After Layer -->
+          <div class="ba-layer ba-after" id="baAfterLayer">
+            <img src="assets/banner1.jpg" alt="Khi đeo tròng kính HMK" class="ba-img" id="baImgAfter" />
+            <div class="ba-filter-overlay ba-filter-after" id="baOverlayAfter"></div>
+            <span class="ba-badge ba-badge-after">KHI ĐEO TRÒNG KÍNH HMK</span>
+          </div>
+
+          <!-- Drag Line / Handle -->
+          <div class="ba-divider" id="baDivider">
+            <div class="ba-handle-btn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+            </div>
+          </div>
+
+          <!-- Range Input Controller -->
+          <input type="range" min="0" max="100" value="50" class="ba-range-input" id="baRangeInput" aria-label="Thanh kéo so sánh trước và sau khi đeo kính" />
+        </div>
+
+        <!-- Feature Description Bar Below Slider -->
+        <div class="ba-desc-bar">
+          <div class="ba-desc-item active" id="desc-blue">
+            <div class="ba-desc-icon">💻</div>
+            <div>
+              <h4>HMK Blue Shield — Chống Ánh Sáng Xanh Điện Tử</h4>
+              <p>Loại bỏ 99% ánh sáng xanh có hại từ màn hình máy tính &amp; điện thoại, giảm nhức mỏi mắt, khô mắt và bảo vệ võng mạc tối đa khi làm việc ban đêm.</p>
+            </div>
+          </div>
+          <div class="ba-desc-item" id="desc-sun">
+            <div class="ba-desc-icon">☀️</div>
+            <div>
+              <h4>Essilor Transitions Gen8 — Đổi Màu Nắng Siêu Nhanh</h4>
+              <p>Tròng kính tự động cảm biến tia UV và chuyển đổi màu sẫm quyến rũ chỉ trong 15 giây khi ra nắng, vừa chống lóa mắt vừa thay thế kính mát thời thượng.</p>
+            </div>
+          </div>
+          <div class="ba-desc-item" id="desc-night">
+            <div class="ba-desc-icon">🌙</div>
+            <div>
+              <h4>HMK Night Vision — Chống Lóa Đèn Xe Đêm</h4>
+              <p>Lớp phủ chống phản quang đa lớp Crizal Rock cắt giảm vệt chói từ đèn pha xe ngược chiều khi đi đêm, mang lại tầm nhìn trong suốt &amp; an toàn khi lái xe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3907,6 +4204,58 @@ function closeMobFilter() {
   if (sec) visObs.observe(sec);
 
 })(); /* ---- END RAINING GLASSES ---- */
+
+/* ---- BEFORE / AFTER LENS SLIDER ---- */
+(function() {
+  const baRangeInput = document.getElementById('baRangeInput');
+  const baAfterLayer = document.getElementById('baAfterLayer');
+  const baDivider    = document.getElementById('baDivider');
+  const baStage      = document.getElementById('baStage');
+  const baTabs       = document.querySelectorAll('.ba-tab');
+  const baDescItems  = document.querySelectorAll('.ba-desc-item');
+  const baImgBefore  = document.getElementById('baImgBefore');
+  const baImgAfter   = document.getElementById('baImgAfter');
+
+  if (!baRangeInput || !baAfterLayer || !baDivider) return;
+
+  function updateSlider(val) {
+    baAfterLayer.style.width = (100 - val) + '%';
+    baDivider.style.left = val + '%';
+  }
+
+  baRangeInput.addEventListener('input', (e) => {
+    updateSlider(e.target.value);
+  });
+
+  // Mode Images Mapping
+  const imagesByMode = {
+    blue: { before: 'assets/banner1.jpg', after: 'assets/banner1.jpg' },
+    sun:  { before: 'assets/banner3.jpg', after: 'assets/banner3.jpg' },
+    night:{ before: 'assets/banner5.jpg', after: 'assets/banner5.jpg' }
+  };
+
+  baTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      baTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const mode = tab.getAttribute('data-tab');
+      if (baStage) baStage.setAttribute('data-mode', mode);
+
+      // Update Active Description
+      baDescItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.id === 'desc-' + mode) item.classList.add('active');
+      });
+
+      // Update Images
+      if (imagesByMode[mode]) {
+        if (baImgBefore) baImgBefore.src = imagesByMode[mode].before;
+        if (baImgAfter)  baImgAfter.src  = imagesByMode[mode].after;
+      }
+    });
+  });
+})();
 
 </script>
 
