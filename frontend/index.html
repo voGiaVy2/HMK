@@ -2767,6 +2767,88 @@ footer { background: var(--off); border-top: 1px solid var(--border); }
       <p class="page-count">Tròng kính chống ánh sáng xanh, tròng kính đổi màu &amp; tròng kính siêu mỏng</p>
     </div>
   </div>
+
+  <!-- BEFORE / AFTER LENS COMPARISON SLIDER -->
+  <div class="ba-slider-sec" role="region" aria-label="So sánh hiệu quả tròng kính HMK">
+    <div class="wrap" style="padding-bottom:0">
+      <div class="sec-head center">
+        <div class="label">TRẢI NGHIỆM TRỰC QUAN TRÒNG KÍNH</div>
+        <h2 class="h2">Cảm Nhận Sự Khác Biệt <em>Trực Tiếp</em></h2>
+        <p class="sub-text">Kéo thanh trượt qua lại để trải nghiệm hiệu quả thực tế của tròng kính HMK so với tròng thông thường</p>
+        
+        <!-- Lens Mode Tabs -->
+        <div class="ba-tabs" role="tablist">
+          <button class="ba-tab active" data-tab="blue">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Chống Ánh Sáng Xanh
+          </button>
+          <button class="ba-tab" data-tab="sun">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            Đổi Màu Nắng (UV400)
+          </button>
+          <button class="ba-tab" data-tab="night">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            Chống Lóa Đêm
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Comparison Widget -->
+      <div class="ba-card">
+        <div class="ba-stage" data-mode="blue">
+          <!-- Before Layer -->
+          <div class="ba-layer ba-before">
+            <img src="assets/banner1.jpg" alt="Trước khi đeo tròng kính HMK" class="ba-img ba-img-before" />
+            <div class="ba-filter-overlay ba-filter-before"></div>
+            <span class="ba-badge ba-badge-before">MẮT THƯỜNG / KHÔNG CÓ TRÒNG HMK</span>
+          </div>
+
+          <!-- After Layer -->
+          <div class="ba-layer ba-after">
+            <img src="assets/banner1.jpg" alt="Khi đeo tròng kính HMK" class="ba-img ba-img-after" />
+            <div class="ba-filter-overlay ba-filter-after"></div>
+            <span class="ba-badge ba-badge-after">KHI ĐEO TRÒNG KÍNH HMK</span>
+          </div>
+
+          <!-- Drag Line / Handle -->
+          <div class="ba-divider">
+            <div class="ba-handle-btn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+            </div>
+          </div>
+
+          <!-- Range Input Controller -->
+          <input type="range" min="0" max="100" value="50" class="ba-range-input" aria-label="Thanh kéo so sánh trước và sau khi đeo kính" />
+        </div>
+
+        <!-- Feature Description Bar Below Slider -->
+        <div class="ba-desc-bar">
+          <div class="ba-desc-item desc-blue active">
+            <div class="ba-desc-icon">💻</div>
+            <div>
+              <h4>HMK Blue Shield — Chống Ánh Sáng Xanh Điện Tử</h4>
+              <p>Loại bỏ 99% ánh sáng xanh có hại từ màn hình máy tính &amp; điện thoại, giảm nhức mỏi mắt, khô mắt và bảo vệ võng mạc tối đa khi làm việc ban đêm.</p>
+            </div>
+          </div>
+          <div class="ba-desc-item desc-sun">
+            <div class="ba-desc-icon">☀️</div>
+            <div>
+              <h4>Essilor Transitions Gen8 — Đổi Màu Nắng Siêu Nhanh</h4>
+              <p>Tròng kính tự động cảm biến tia UV và chuyển đổi màu sẫm quyến rũ chỉ trong 15 giây khi ra nắng, vừa chống lóa mắt vừa thay thế kính mát thời thượng.</p>
+            </div>
+          </div>
+          <div class="ba-desc-item desc-night">
+            <div class="ba-desc-icon">🌙</div>
+            <div>
+              <h4>HMK Night Vision — Chống Lóa Đèn Xe Đêm</h4>
+              <p>Lớp phủ chống phản quang đa lớp Crizal Rock cắt giảm vệt chói từ đèn pha xe ngược chiều khi đi đêm, mang lại tầm nhìn trong suốt &amp; an toàn khi lái xe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap" style="padding-top:0"><div class="sort-strip"><div class="sort-l">Dữ liệu tròng kính chính hãng HMK Eyewear</div><div class="sort-r"><button class="mob-filter-btn" onclick="openMobFilter()"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg> Bộ Lọc</button><select class="sort-sel"><option>Nổi bật nhất</option><option>Giá: Thấp → Cao</option></select></div></div></div>
   <div class="shop-wrap">
     <aside class="sidebar" aria-label="Bộ lọc tròng kính">
@@ -4207,52 +4289,51 @@ function closeMobFilter() {
 
 /* ---- BEFORE / AFTER LENS SLIDER ---- */
 (function() {
-  const baRangeInput = document.getElementById('baRangeInput');
-  const baAfterLayer = document.getElementById('baAfterLayer');
-  const baDivider    = document.getElementById('baDivider');
-  const baStage      = document.getElementById('baStage');
-  const baTabs       = document.querySelectorAll('.ba-tab');
-  const baDescItems  = document.querySelectorAll('.ba-desc-item');
-  const baImgBefore  = document.getElementById('baImgBefore');
-  const baImgAfter   = document.getElementById('baImgAfter');
+  const baSections = document.querySelectorAll('.ba-slider-sec');
+  if (!baSections.length) return;
 
-  if (!baRangeInput || !baAfterLayer || !baDivider) return;
+  baSections.forEach(sec => {
+    const rangeInput = sec.querySelector('.ba-range-input');
+    const afterLayer = sec.querySelector('.ba-after');
+    const divider    = sec.querySelector('.ba-divider');
+    const stage      = sec.querySelector('.ba-stage');
+    const tabs       = sec.querySelectorAll('.ba-tab');
+    const descItems  = sec.querySelectorAll('.ba-desc-item');
+    const imgBefore  = sec.querySelector('.ba-img-before');
+    const imgAfter   = sec.querySelector('.ba-img-after');
 
-  function updateSlider(val) {
-    baAfterLayer.style.width = (100 - val) + '%';
-    baDivider.style.left = val + '%';
-  }
+    if (!rangeInput || !afterLayer || !divider) return;
 
-  baRangeInput.addEventListener('input', (e) => {
-    updateSlider(e.target.value);
-  });
+    rangeInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      afterLayer.style.width = (100 - val) + '%';
+      divider.style.left = val + '%';
+    });
 
-  // Mode Images Mapping
-  const imagesByMode = {
-    blue: { before: 'assets/banner1.jpg', after: 'assets/banner1.jpg' },
-    sun:  { before: 'assets/banner3.jpg', after: 'assets/banner3.jpg' },
-    night:{ before: 'assets/banner5.jpg', after: 'assets/banner5.jpg' }
-  };
+    const imagesByMode = {
+      blue: { before: 'assets/banner1.jpg', after: 'assets/banner1.jpg' },
+      sun:  { before: 'assets/banner3.jpg', after: 'assets/banner3.jpg' },
+      night:{ before: 'assets/banner5.jpg', after: 'assets/banner5.jpg' }
+    };
 
-  baTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      baTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
 
-      const mode = tab.getAttribute('data-tab');
-      if (baStage) baStage.setAttribute('data-mode', mode);
+        const mode = tab.getAttribute('data-tab');
+        if (stage) stage.setAttribute('data-mode', mode);
 
-      // Update Active Description
-      baDescItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.id === 'desc-' + mode) item.classList.add('active');
+        descItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.classList.contains('desc-' + mode)) item.classList.add('active');
+        });
+
+        if (imagesByMode[mode]) {
+          if (imgBefore) imgBefore.src = imagesByMode[mode].before;
+          if (imgAfter)  imgAfter.src  = imagesByMode[mode].after;
+        }
       });
-
-      // Update Images
-      if (imagesByMode[mode]) {
-        if (baImgBefore) baImgBefore.src = imagesByMode[mode].before;
-        if (baImgAfter)  baImgAfter.src  = imagesByMode[mode].after;
-      }
     });
   });
 })();
